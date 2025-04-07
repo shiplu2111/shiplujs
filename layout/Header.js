@@ -39,7 +39,7 @@ const Header1 = ({ onePageMenu }) => {
               <div className="logo">
                 <Link legacyBehavior href="/">
                   <a>
-                    <img
+                    <img style={{ width: "156px"  }}
                       src="assets/images/logos/logo.png"
                       alt="Logo"
                       title="Logo"
