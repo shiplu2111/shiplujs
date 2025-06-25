@@ -21,19 +21,10 @@ const MultiMenu = () => {
       <Link href="/projects">Projects</Link>
         {/* <DropdownBtn /> */}
       </li>
-      {/* <li className="dropdown">
-        <a href="#">blog</a>
-        <ul>
+
           <li>
-            <Link href="/blog">blog standard</Link>
-          </li>
-          <li>
-            <Link href="/blog-details">blog details</Link>
-          </li>
-        </ul>
-        <DropdownBtn />
-      </li> */}
-      
+        <Link href="/blog">Blog</Link>
+      </li>
       <li>
         <Link href="contact">Contact</Link>
       </li>

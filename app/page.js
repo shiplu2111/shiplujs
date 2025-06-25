@@ -10,15 +10,16 @@ import Services from "@/components/Services";
 import Skill from "@/components/Skill";
 import Testimonial from "@/components/Testimonial";
 import NoxfolioLayout from "@/layout/NoxfolioLayout";
-
-export default function Home() {
+import { getAllModules, getModulesText } from "@/lib/settingApi";
+export default async function Home() {
+  const module_text = await getModulesText();
   return (
     <NoxfolioLayout>
       {/* Hero Section Start */}
       <Hero />
       {/* Hero Section End */}
       {/* About Area start */}
-      <About />
+      <About module_text={module_text} />
       {/* About Area end */}
       {/* Resume Area start */}
       <Resume />

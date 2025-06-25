@@ -9,6 +9,10 @@ import "@css/nice-select.min.css";
 import "@css/slick.min.css";
 import "@css/style.css";
 import "./globals.css";
+import Header from "@/layout/Header";
+import Footer from "@/layout/Footer";
+import SideBar from "@/layout/SideBar";
+import { getWebsiteSetting, getSocial } from "@/lib/settingApi";
 
 /** google fonts */
 const inter = Inter({
@@ -23,7 +27,8 @@ const dm_sans = DM_Sans({
   variable: "--font-dm_sans",
   display: "swap",
 });
-
+const setting = await getWebsiteSetting();
+const social = await getSocial();
 /** Font family */
 const fontFamily = `${inter.variable} ${dm_sans.variable} `;
 
@@ -37,12 +42,16 @@ export const metadata = {
   description: "Shiplujs - Explore My Amazing Web Wonderland!!",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+
   return (
     <html lang="en" className={`${fontFamily} scroll-smooth`}>
       <body>
+        <Header setting={setting} social={social} />
         <Preloader />
+        <SideBar setting={setting} social={social} />
         {children}
+        <Footer setting={setting} social={social} />
       </body>
     </html>
   );

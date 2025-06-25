@@ -7,10 +7,6 @@ import SideBar from "./SideBar";
 
 const NoxfolioLayout = ({
   children,
-  header,
-  footer,
-  noFooter,
-  onePageMenu,
 }) => {
   useEffect(() => {
     noxfolioUtilits.animaiton();
@@ -18,10 +14,7 @@ const NoxfolioLayout = ({
 
   return (
     <div className="page-wrapper">
-      <Header header={header} onePageMenu={onePageMenu} />
-      <SideBar />
       {children}
-      {!noFooter && <Footer footer={footer} />}
     </div>
   );
 };

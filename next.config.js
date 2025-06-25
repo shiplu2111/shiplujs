@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: "http",
+                hostname: "shiplujs-admin.test", // your image domain
+            },
+        ],
+    },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -1,6 +1,7 @@
 "use client";
 import { Fragment } from "react";
-const SideBar = () => {
+import * as FaIcons from "react-icons/fa";
+const SideBar = ({ social }) => {
   const toggleSidebar = () => {
     console.log("hi");
     document.querySelector("body").classList.remove("side-content-visible");
@@ -57,18 +58,13 @@ const SideBar = () => {
           </div>
           {/*Social Icons*/}
           <div className="social-style-one">
-            <a href="#">
-              <i className="fab fa-twitter" />
-            </a>
-            <a href="#">
-              <i className="fab fa-facebook-f" />
-            </a>
-            <a href="#">
-              <i className="fab fa-instagram" />
-            </a>
-            <a href="#">
-              <i className="fab fa-pinterest-p" />
-            </a>
+            {social?.map((item, index) => {
+              return (
+                <a href={item.url} key={index}>
+                  <i className={item.icon} />
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
