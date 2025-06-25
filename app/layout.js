@@ -13,7 +13,7 @@ import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
 import SideBar from "@/layout/SideBar";
 import { getWebsiteSetting, getSocial } from "@/lib/settingApi";
-
+import NextTopLoader from 'nextjs-toploader';
 /** google fonts */
 const inter = Inter({
   subsets: ["latin"],
@@ -47,6 +47,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" className={`${fontFamily} scroll-smooth`}>
       <body>
+        <NextTopLoader crawl={true} color="#c9f31d" height={4} showSpinner={false} shadow="0 0 10px #2299DD,0 0 5px #2299DD" />
         <Header setting={setting} social={social} />
         <Preloader />
         <SideBar setting={setting} social={social} />
