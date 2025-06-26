@@ -2,8 +2,6 @@
 import Link from "next/link";
 
 const Footer = ({ setting, social }) => {
-// console.log(setting, "setting");
-// console.log(social, "social");
 
   return (
     <footer className="main-footer rel z-1">
@@ -82,7 +80,7 @@ const Footer = ({ setting, social }) => {
                   </li>
                   <li>
                     <i className="far fa-phone" />{" "}
-                    <a href="callto:+880(123)45688">{setting?.phone}</a>
+                    <a href={`tel:${setting?.phone}`}>{setting?.phone}</a>
                   </li>
                 </ul>
               </div>
@@ -108,14 +106,14 @@ const Footer = ({ setting, social }) => {
             <div className="col-lg-6 text-lg-end">
               <ul className="footer-bottom-nav  justify-content-center">
                 {social?.map((item, index) => (
-                  <>
+
                     <li key={index}>
                       <a href={item?.link || "#"}>
                         {item?.name}
                       </a>
                     </li>
 
-                  </>
+
                 ))}
 
               </ul>

@@ -1,57 +1,11 @@
 import Link from "next/link";
+import HighlightKeyword from "./HighlightKeyword";
+import { getSkill } from "@/lib/aboutApi";
+const skills = await getSkill();
 
-const items = [
-  {
-    id: 1,
-    name: "Figma",
-    image: "assets/images/skills/skill1.png",
-    value: "95",
-  },
-  {
-    id: 2,
-    name: "Framer",
-    image: "assets/images/skills/skill2.png",
-    value: "83",
-  },
-  {
-    id: 3,
-    name: "Photoshop",
-    image: "assets/images/skills/skill3.png",
-    value: "93",
-  },
-  {
-    id: 4,
-    name: "Wordpress",
-    image: "assets/images/skills/skill4.png",
-    value: "84",
-  },
-  {
-    id: 5,
-    name: "Angular",
-    image: "assets/images/skills/skill5.png",
-    value: "65",
-  },
-  {
-    id: 6,
-    name: "Webflow",
-    image: "assets/images/skills/skill6.png",
-    value: "86",
-  },
-  {
-    id: 7,
-    name: "Python",
-    image: "assets/images/skills/skill7.png",
-    value: "62",
-  },
-  {
-    id: 8,
-    name: "Sketch",
-    image: "assets/images/skills/skill8.png",
-    value: "94",
-  },
-];
+const Skill = async ({ module_text, modules }) => {
+  if (!modules?.skill) return null;
 
-const Skill = () => {
   return (
     <section id="skills" className="skill-area rel z-1">
       <div className="for-bgc-black pt-130 rpt-100 pb-100 rpb-70">
@@ -62,12 +16,11 @@ const Skill = () => {
                 <div className="section-title mb-40">
                   <span className="sub-title mb-15">My Skills</span>
                   <h2>
-                    Let’s Explore Popular <span>Skills &amp; Experience</span>
+                    <HighlightKeyword text={module_text.skill_title} keyword={module_text.skill_keyword} />
+
                   </h2>
                   <p>
-                    Sed ut perspiciatis unde omnis iste natus to voluptatem
-                    accusantium doloremque laudantium, totam rem aperiamc eaque
-                    ipsa quae ab illo inventore veritatis
+                    {module_text?.skill_sub_title}
                   </p>
                 </div>
                 <Link legacyBehavior href="/about">
@@ -80,12 +33,12 @@ const Skill = () => {
             <div className="col-lg-7">
               <div className="skill-items-wrap">
                 <div className="row">
-                  {items.map((item) => (
+                  {skills.map((item) => (
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6" key={item.id}>
                       <div className="skill-item wow fadeInUp delay-0-2s">
-                        <img src={item.image} alt="Skill" />
+                        <img src={item.image ?? "/assets/images/skills/10.png"} alt="Skill" style={{ width: "60px", height: "60px", objectFit: "contain" }} />
                         <h5>{item.name}</h5>
-                        <span className="percent">{item.value}%</span>
+                        <span className="percent">{item?.percentage}%</span>
                       </div>
                     </div>
                   ))}

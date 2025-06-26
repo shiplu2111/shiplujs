@@ -5,12 +5,17 @@ import Services from "@/components/Services";
 import Testimonial from "@/components/Testimonial";
 import NoxfolioLayout from "@/layout/NoxfolioLayout";
 import Link from "next/link";
+import { getAllModules, getModulesText, getWebsiteSetting } from "@/lib/settingApi";
 
 export const metadata = {
   title: "About Me",
 };
 
-const About = () => {
+const About = async () => {
+
+  const modules = await getAllModules();
+  const module_text = await getModulesText();
+  const setting = await getWebsiteSetting();
   return (
     <NoxfolioLayout>
       <PageBanner pageName={"About Me"} />
@@ -106,7 +111,7 @@ const About = () => {
       </section>
       {/* About Page Area end */}
       {/* Services Area start */}
-      <Services extraClass={"bgc-black"} />
+      <Services extraClass={"bgc-black"} module_text={module_text} modules={modules} />
       {/* Services Area end */}
       {/* FAQs Area start */}
       <section id="faqs" className="faqs-area py-130 rpy-100 rel z-1">

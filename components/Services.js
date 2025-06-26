@@ -1,38 +1,11 @@
 import Link from "next/link";
+import HighlightKeyword from "./HighlightKeyword";
+import { getServices } from "@/lib/serviceApi";
 
-const Services = ({ extraClass }) => {
-  const services = [
-    {
-      id: 1,
-      title: "Brand Identity Design",
-      text: "Dignissimos ducimus blanditiis praesen",
-    },
-    {
-      id: 2,
-      title: "Website Design",
-      text: "Dignissimos ducimus blanditiis praesen",
-    },
-    {
-      id: 3,
-      title: "Mobile Application Design",
-      text: "Dignissimos ducimus blanditiis praesen",
-    },
-    {
-      id: 4,
-      title: "Motion Graphics Design",
-      text: "Dignissimos ducimus blanditiis praesen",
-    },
-    {
-      id: 5,
-      title: "Website Development",
-      text: "Dignissimos ducimus blanditiis praesen",
-    },
-    {
-      id: 6,
-      title: "SEO & Digital Marketing",
-      text: "Dignissimos ducimus blanditiis praesen",
-    },
-  ];
+const Services = async ({ extraClass, module_text, modules }) => {
+  const services = await getServices();
+
+  if (!modules?.service) return <div style={{ marginBottom: "100px" }}></div>;
   return (
     <section
       id="services"
@@ -44,13 +17,14 @@ const Services = ({ extraClass }) => {
             <div className="section-title text-center mb-60 wow fadeInUp delay-0-2s">
               <span className="sub-title mb-15">Popular Services</span>
               <h2>
-                My <span>Special Service</span> For your Business Development
+                <HighlightKeyword text={module_text.service_title} keyword={module_text.service_keyword} />
+                {/* My <span>Special Service</span> For your Business Development */}
               </h2>
             </div>
           </div>
         </div>
         <div className="row">
-          {services.map((service) => (
+          {services?.map((service) => (
             <div className="col-lg-6" key={service.id}>
               <div className="service-item wow fadeInUp delay-0-2s">
                 <div className="number">
@@ -58,8 +32,9 @@ const Services = ({ extraClass }) => {
                 </div>
                 <div className="content">
                   <h4>{service.title}</h4>
-                  <p>{service.text}</p>
+                  <p>{service?.sub_title}</p>
                 </div>
+                {/* <Link legacyBehavior href={`/service-details/${service.slug}`}> */}
                 <Link legacyBehavior href="/#">
                   <a className="details-btn">
                     <i className="fas fa-arrow-right" />
@@ -86,6 +61,7 @@ const Services = ({ extraClass }) => {
   );
 };
 export default Services;
+
 
 export const Services2 = () => {
   return (

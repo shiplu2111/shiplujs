@@ -3,12 +3,16 @@ import Pricing from "@/components/Pricing";
 import Services from "@/components/Services";
 import NoxfolioLayout from "@/layout/NoxfolioLayout";
 import Link from "next/link";
+import { getAllModules, getModulesText, getWebsiteSetting } from "@/lib/settingApi";
 
 export const metadata = {
   title: "Services",
 };
 
-const ServicePage = () => {
+const ServicePage = async () => {
+  const modules = await getAllModules();
+  const module_text = await getModulesText();
+  const setting = await getWebsiteSetting();
   return (
     <NoxfolioLayout>
       <PageBanner pageName={"Popular Service"} />
@@ -78,7 +82,7 @@ const ServicePage = () => {
         </div>
       </section>
       {/* What I Do Area end */}
-      <Services extraClass={"bgc-black"} />
+      <Services extraClass={"bgc-black"} module_text={module_text} modules={modules} />
       {/* Pricing Area start */}
       <Pricing extraClass={"pb-100"} />
     </NoxfolioLayout>

@@ -27,8 +27,7 @@ const dm_sans = DM_Sans({
   variable: "--font-dm_sans",
   display: "swap",
 });
-const setting = await getWebsiteSetting();
-const social = await getSocial();
+
 /** Font family */
 const fontFamily = `${inter.variable} ${dm_sans.variable} `;
 
@@ -43,7 +42,8 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-
+  const setting = await getWebsiteSetting();
+  const social = await getSocial();
   return (
     <html lang="en" className={`${fontFamily} scroll-smooth`}>
       <body>

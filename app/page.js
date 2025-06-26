@@ -10,31 +10,40 @@ import Services from "@/components/Services";
 import Skill from "@/components/Skill";
 import Testimonial from "@/components/Testimonial";
 import NoxfolioLayout from "@/layout/NoxfolioLayout";
-import { getAllModules, getModulesText } from "@/lib/settingApi";
+import { getAllModules, getModulesText, getWebsiteSetting } from "@/lib/settingApi";
+import { getHero } from "@/lib/aboutApi";
+import { getTestimonials } from "@/lib/projectApi"
 export default async function Home() {
+  const modules = await getAllModules();
   const module_text = await getModulesText();
+  const setting = await getWebsiteSetting();
+  const hero = await getHero();
+  const testimonials = await getTestimonials();
+
+  // console.log(module_text)
+
   return (
     <NoxfolioLayout>
       {/* Hero Section Start */}
       <Hero />
       {/* Hero Section End */}
       {/* About Area start */}
-      <About module_text={module_text} />
+      <About module_text={module_text} setting={setting} hero={hero} />
       {/* About Area end */}
       {/* Resume Area start */}
-      <Resume />
+      <Resume module_text={module_text} />
       {/* Resume Area end */}
       {/* Services Area start */}
-      <Services />
+      <Services module_text={module_text} modules={modules} />
       {/* Services Area end */}
       {/* Skill Area start */}
-      <Skill />
+      <Skill module_text={module_text} modules={modules} />
       {/* Skill Area end */}
       {/* Projects Area start */}
-      <Projects />
+      <Projects modules={modules} />
       {/* Projects Area end */}
       {/* Testimonial Area start */}
-      <Testimonial />
+      <Testimonial testimonials={testimonials} module_text={module_text} modules={modules} />
       {/* Testimonial Area end */}
       {/* Pricing Area start */}
       <Pricing />

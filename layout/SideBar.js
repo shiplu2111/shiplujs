@@ -3,7 +3,6 @@ import { Fragment } from "react";
 import * as FaIcons from "react-icons/fa";
 const SideBar = ({ social }) => {
   const toggleSidebar = () => {
-    console.log("hi");
     document.querySelector("body").classList.remove("side-content-visible");
   };
   return (
