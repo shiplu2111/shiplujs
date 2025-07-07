@@ -20,7 +20,7 @@ export default async function Home() {
   const hero = await getHero();
   const testimonials = await getTestimonials();
 
-  // console.log(module_text)
+  console.log(modules)
 
   return (
     <NoxfolioLayout>
@@ -46,7 +46,7 @@ export default async function Home() {
       <Testimonial testimonials={testimonials} module_text={module_text} modules={modules} />
       {/* Testimonial Area end */}
       {/* Pricing Area start */}
-      <Pricing />
+      <Pricing module_text={module_text} modules={modules} />
       {/* Pricing Area end */}
       {/* Contact Area start */}
       <Contact />
