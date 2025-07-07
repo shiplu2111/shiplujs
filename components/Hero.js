@@ -1,33 +1,41 @@
+'use client';
 import Link from "next/link";
 import Counter from "./Counter";
-
-const counterData = [
-  { id: 1, text: "Years Of Experience", value: "13", valueType: "plus" },
-  { id: 2, text: "Project Complete", value: "8", valueType: "k-plus" },
-  { id: 3, text: "Client Satisfactions", value: "99", valueType: "percent" },
-];
-
+import heroData from "@/data/heroData";
+import dynamic from 'next/dynamic';
+const counterData = heroData.counterData;
+import Tilt from 'react-parallax-tilt';
+const Typewriter = dynamic(() => import('typewriter-effect'), { ssr: false });
 const Hero = () => {
+  
   return (
     <section id="home" className="main-hero-area pt-150 pb-80 rel z-1">
+    
       <div className="container container-1620">
         <div className="row align-items-center">
           <div className="col-lg-4 col-sm-7">
             <div className="hero-content rmb-55 wow fadeInUp delay-0-2s">
-              <span className="h2">Hello, i’m </span>
+              <span className="h2">{heroData.title}</span>
               <h1>
-                <b>Roy C. Jones</b> web designer
+              
+                <b>{heroData.name}</b> <br />
               </h1>
+              <h2>
+              {heroData.designation}
+              </h2>
+              
               <p>
-                We denounce with righteous indignation dislike demoralized by
-                the charms of pleasure
+              
+                {heroData.description}
               </p>
               <div className="hero-btns">
+              
                 <Link legacyBehavior href="/contact">
                   <a className="theme-btn">
                     Hire Me <i className="far fa-angle-right" />
                   </a>
                 </Link>
+                
                 <Link legacyBehavior href="/contact">
                   <a className="read-more">
                     Download Resume <i className="far fa-angle-right" />
@@ -47,6 +55,14 @@ const Hero = () => {
             </div>
           </div>
           <div className="col-lg-5">
+          <Tilt
+              tiltEnable={true}
+              glareEnable={true}
+              glareMaxOpacity={0.8}
+              glareColor="black"
+              glarePosition="bottom"
+              glareBorderRadius="20px"
+          >
             <div className="author-image-part wow fadeIn delay-0-3s">
               <div className="bg-circle" />
               <img src="assets/images/hero/me.png" alt="Author" />
@@ -57,6 +73,7 @@ const Hero = () => {
                 />
               </div>
             </div>
+            </Tilt>
           </div>
         </div>
       </div>

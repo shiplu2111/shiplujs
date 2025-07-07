@@ -81,7 +81,7 @@ const Skill = () => {
               <div className="skill-items-wrap">
                 <div className="row">
                   {items.map((item) => (
-                    <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
+                    <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6" key={item.id}>
                       <div className="skill-item wow fadeInUp delay-0-2s">
                         <img src={item.image} alt="Skill" />
                         <h5>{item.name}</h5>

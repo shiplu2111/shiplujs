@@ -1,5 +1,6 @@
 import Counter from "./Counter";
-
+// import Tilt from 'index';
+// import './ParallaxEffect.demozap.css';
 const About = () => {
   return (
     <section id="about" className="about-area rel z-1">
@@ -52,9 +53,10 @@ const About = () => {
                 <img src="assets/images/about/about.jpg" alt="About Me" />
                 <div className="about-btn btn-one wow fadeInRight delay-0-4s">
                   <img src="assets/images/about/btn-image1.png" alt="Image" />
-                  <h6>Experience Designer</h6>
+                  <h6>Expe</h6>
                   <i className="fas fa-arrow-right" />
                 </div>
+                
                 <div className="about-btn btn-two wow fadeInRight delay-0-5s">
                   <img src="assets/images/about/btn-image2.png" alt="Image" />
                   <h6>Mark J. Collins</h6>

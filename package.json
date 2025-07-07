@@ -15,8 +15,10 @@
     "react-bootstrap": "^1.6.1",
     "react-countup": "^6.5.0",
     "react-dom": "^18",
+    "react-parallax-tilt": "^1.7.289",
     "react-slick": "^0.29.0",
     "react-visibility-sensor": "^5.1.1",
+    "typewriter-effect": "^2.21.0",
     "wowjs": "^1.1.3"
   }
 }

@@ -60,6 +60,8 @@ body {
   --base-color: rgba(255, 255, 255, 0.65);
   --heading-color: #ffffff;
   --primary-color: #c9f31d;
+    
+  /* --primary-color: rgb(0, 123, 231); */
   --lighter-color: #1f1f1f;
   --black-color: #070707;
   --border-color: rgba(255, 255, 255, 0.1);
@@ -4764,6 +4766,18 @@ h6,
   max-width: 415px;
 }
 .hero-content .h2 {
+  display: block;
+  font-weight: 400;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.35);
+}
+.hero-content .h3 {
+  display: block;
+  font-weight: 400;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.35);
+}
+.hero-content .h4 {
   display: block;
   font-weight: 400;
   margin-bottom: 5px;

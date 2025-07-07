@@ -32,7 +32,7 @@ const Contact = () => {
                 id="contactForm"
                 className="contactForm"
                 name="contactForm"
-                action="assets/php/form-process.php"
+                action="#"
                 method="post"
               >
                 <div className="row">
@@ -213,7 +213,7 @@ export const Contact2 = () => {
                 id="contactForm"
                 className="contactForm"
                 name="contactForm"
-                action="assets/php/form-process.php"
+                action="#"
                 method="post"
               >
                 <div className="form-group">
