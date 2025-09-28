@@ -1,11 +1,21 @@
+import ContactFormArea from "@/components/ContactFormArea";
+import HighlightKeyword from "@/components/HighlightKeyword";
 import PageBanner from "@/components/PageBanner";
 import NoxfolioLayout from "@/layout/NoxfolioLayout";
+import { getContacts } from "@/lib/contactApi";
+import { getAllModules, getModulesText, getWebsiteSetting, getSocialLinks } from "@/lib/settingApi";
 
 export const metadata = {
   title: "Contact",
 };
 
-const page = () => {
+const page = async () => {
+  const contacts = await getContacts();
+  const modules = await getAllModules();
+  const module_text = await getModulesText();
+  const setting = await getWebsiteSetting();
+  const socialLinks = await getSocialLinks();
+
   return (
     <NoxfolioLayout>
       <PageBanner pageName={"Contact Us"} />
@@ -18,160 +28,44 @@ const page = () => {
                 <div className="section-title mb-30">
                   <span className="sub-title mb-15">Get In Touch</span>
                   <h2>
-                    Let’s Talk For your <span>Next Projects</span>
+                    <HighlightKeyword text={module_text.contact_title} keyword={module_text.contact_keyword} />
+
                   </h2>
                   <p>
-                    Sed ut perspiciatis unde omnin natus totam rem aperiam eaque
-                    inventore veritatis
+                    {module_text?.contact_sub_title}
                   </p>
                 </div>
-                <h6>Main Office</h6>
+                <h6>Contact Information</h6>
                 <div className="widget_contact_info mb-35">
                   <ul>
                     <li>
-                      <i className="far fa-map-marker-alt" /> 55 Main Street,
-                      2nd block,
-                      <br /> New York City
+                      <i className="far fa-map-marker-alt" /> {contacts?.address},
+                      <br /> {contacts?.city}, {contacts?.district}-{contacts?.postal_code},
+                      <br /> {contacts?.country}
                     </li>
                     <li>
                       <i className="far fa-envelope" />{" "}
-                      <a href="mailto:support@gmail.com">support@gmail.com</a>
+                      <a href={`mailto:${contacts?.email}`}>{contacts?.email}</a>
                     </li>
                     <li>
                       <i className="far fa-phone" />{" "}
-                      <a href="callto:+880(123)45688">+880 (123) 456 88</a>
+                      <a href={`callto:${contacts?.phone}`}>{contacts?.phone}</a>
                     </li>
                   </ul>
                 </div>
                 <h5>Follow Me</h5>
                 <div className="social-style-one mt-10">
-                  <a href="#">
-                    <i className="fab fa-facebook-f" />
-                  </a>
-                  <a href="#">
-                    <i className="fab fa-twitter" />
-                  </a>
-                  <a href="#">
-                    <i className="fab fa-linkedin-in" />
-                  </a>
-                  <a href="#">
-                    <i className="fab fa-instagram" />
-                  </a>
+                  {socialLinks?.map((link) => (
+                    <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer">
+                      <i className={`${link.icon}`} />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
             <div className="col-lg-8">
               <div className="contact-page-form contact-form form-style-one wow fadeInUp delay-0-2s">
-                <form
-                  id="contactForm"
-                  className="contactForm"
-                  name="contactForm"
-                  action="assets/php/form-process.php"
-                  method="post"
-                >
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="name">Full Name</label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          className="form-control"
-                          defaultValue=""
-                          placeholder="Richard D. Hammond"
-                          required=""
-                          data-error="Please enter your Name"
-                        />
-                        <label htmlFor="name" className="for-icon">
-                          <i className="far fa-user" />
-                        </label>
-                        <div className="help-block with-errors" />
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="email">Email Address</label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          className="form-control"
-                          defaultValue=""
-                          placeholder="support@gmail.com"
-                          required=""
-                          data-error="Please enter your Email"
-                        />
-                        <label htmlFor="email" className="for-icon">
-                          <i className="far fa-envelope" />
-                        </label>
-                        <div className="help-block with-errors" />
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="phone_number">Phone Number</label>
-                        <input
-                          type="text"
-                          id="phone_number"
-                          name="phone_number"
-                          className="form-control"
-                          defaultValue=""
-                          placeholder="+880 (123) 456 88"
-                          required=""
-                          data-error="Please enter your Phone Number"
-                        />
-                        <label htmlFor="phone_number" className="for-icon">
-                          <i className="far fa-phone" />
-                        </label>
-                        <div className="help-block with-errors" />
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <label htmlFor="subject">Subject</label>
-                        <input
-                          type="text"
-                          id="subject"
-                          name="subject"
-                          className="form-control"
-                          defaultValue=""
-                          placeholder="Subject"
-                          required=""
-                          data-error="Please enter your Subject"
-                        />
-                        <label htmlFor="subject" className="for-icon">
-                          <i className="far fa-text" />
-                        </label>
-                        <div className="help-block with-errors" />
-                      </div>
-                    </div>
-                    <div className="col-md-12">
-                      <div className="form-group">
-                        <label htmlFor="message">Message</label>
-                        <textarea
-                          name="message"
-                          id="message"
-                          className="form-control"
-                          rows={4}
-                          placeholder="write message"
-                          required=""
-                          data-error="Please enter your Message"
-                          defaultValue={""}
-                        />
-                        <div className="help-block with-errors" />
-                      </div>
-                    </div>
-                    <div className="col-md-12">
-                      <div className="form-group mb-0">
-                        <button type="submit" className="theme-btn">
-                          Send Us Message <i className="far fa-angle-right" />
-                        </button>
-                        <div id="msgSubmit" className="hidden" />
-                      </div>
-                    </div>
-                  </div>
-                </form>
+                <ContactFormArea />
               </div>
             </div>
           </div>
@@ -194,13 +88,16 @@ const page = () => {
       <div className="contact-page-map pb-120 rpb-90 wow fadeInUp delay-0-2s">
         <div className="container">
           <div className="our-location">
+            {contacts?.map && (
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m12!1m10!1m3!1d142190.2862584524!2d-74.01298319978558!3d40.721725351435126!2m1!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbd!4v1663473911885!5m2!1sen!2sbd"
+                src={contacts?.map}
               style={{ border: 0, width: "100%" }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
+            )}
+
           </div>
         </div>
       </div>

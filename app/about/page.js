@@ -5,17 +5,21 @@ import Services from "@/components/Services";
 import Testimonial from "@/components/Testimonial";
 import NoxfolioLayout from "@/layout/NoxfolioLayout";
 import Link from "next/link";
+import { getHero } from "@/lib/aboutApi";
+
 import { getAllModules, getModulesText, getWebsiteSetting } from "@/lib/settingApi";
+import About from "@/components/About";
 
 export const metadata = {
   title: "About Me",
 };
 
-const About = async () => {
+const AboutMe = async () => {
 
   const modules = await getAllModules();
   const module_text = await getModulesText();
   const setting = await getWebsiteSetting();
+  const hero = await getHero();
   return (
     <NoxfolioLayout>
       <PageBanner pageName={"About Me"} />
@@ -28,7 +32,9 @@ const About = async () => {
         </div>
       </div>
       {/* About Page Area start */}
-      <section className="about-page-area py-130 rpy-100 rel z-1">
+      <About module_text={module_text} setting={setting} hero={hero} />
+
+      {/* <section className="about-page-area py-130 rpy-100 rel z-1">
         <div className="container">
           <div className="row align-items-center justify-content-between">
             <div className="col-lg-6">
@@ -108,7 +114,7 @@ const About = async () => {
           <span />
           <span />
         </div>
-      </section>
+      </section> */}
       {/* About Page Area end */}
       {/* Services Area start */}
       <Services extraClass={"bgc-black"} module_text={module_text} modules={modules} />
@@ -163,4 +169,4 @@ const About = async () => {
     </NoxfolioLayout>
   );
 };
-export default About;
+export default AboutMe;

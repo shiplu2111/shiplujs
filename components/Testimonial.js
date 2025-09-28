@@ -18,7 +18,6 @@ export default class Testimonial extends Component {
   render() {
     const { testimonials, modules, module_text } = this.props;
     if (!modules?.project) return null;
-    console.log(module_text);
     return (
       <section className="testimonials-area rel z-1">
         <div className="for-bgc-black py-130 rpy-100">

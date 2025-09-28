@@ -14,6 +14,8 @@ import Footer from "@/layout/Footer";
 import SideBar from "@/layout/SideBar";
 import { getWebsiteSetting, getSocial } from "@/lib/settingApi";
 import NextTopLoader from 'nextjs-toploader';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 /** google fonts */
 const inter = Inter({
   subsets: ["latin"],
@@ -52,6 +54,7 @@ export default async function RootLayout({ children }) {
         <Preloader />
         <SideBar setting={setting} social={social} />
         {children}
+        <ToastContainer position="top-right" autoClose={3000} />
         <Footer setting={setting} social={social} />
       </body>
     </html>

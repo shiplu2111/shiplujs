@@ -8569,3 +8569,6 @@ blockquote .blockquote-footer:before {
   width: 64px;  /* same as Tailwind's w-16 */
   height: 64px; /* same as Tailwind's h-16 */
 }
+.mt-2 {
+  margin-top: 35px;
+}

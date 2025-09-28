@@ -1,5 +1,7 @@
 "use client";
 import { Accordion } from "react-bootstrap";
+import Link from "next/link";
+
 
 const Faq = () => {
   return (

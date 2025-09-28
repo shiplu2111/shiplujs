@@ -10,7 +10,7 @@ import Services from "@/components/Services";
 import Skill from "@/components/Skill";
 import Testimonial from "@/components/Testimonial";
 import NoxfolioLayout from "@/layout/NoxfolioLayout";
-import { getAllModules, getModulesText, getWebsiteSetting } from "@/lib/settingApi";
+import { getAllModules, getModulesText, getWebsiteSetting, getSocialLinks } from "@/lib/settingApi";
 import { getHero } from "@/lib/aboutApi";
 import { getTestimonials } from "@/lib/projectApi"
 export default async function Home() {
@@ -20,7 +20,6 @@ export default async function Home() {
   const hero = await getHero();
   const testimonials = await getTestimonials();
 
-  console.log(modules)
 
   return (
     <NoxfolioLayout>
@@ -49,13 +48,13 @@ export default async function Home() {
       <Pricing module_text={module_text} modules={modules} />
       {/* Pricing Area end */}
       {/* Contact Area start */}
-      <Contact />
+      <Contact module_text={module_text} modules={modules} />
       {/* Contact Area end */}
       {/* Blog Area start */}
       <Blog />
       {/* Blog Area end */}
       {/* Client Log start */}
-      <Clients />
+      <Clients module_text={module_text} modules={modules} />
       {/* Client Log end */}
     </NoxfolioLayout>
   );
